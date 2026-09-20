@@ -1,0 +1,26 @@
+# Lattice Radiant generated files
+impl*/
+*.html
+*.xml
+*.log
+*.tcl
+*.ccl
+*.srp
+*.dmp
+*.dir/
+.build_status
+.run_manager.ini
+.ng_run_manager.ini
+.recovery
+.setting.ini
+.spread_sheet.ini
+.spreadsheet_view.ini
+.floorplanner.ini
+reportview.xml
+
+# Questa generated files
+work/
+transcript
+vsim.wlf
+*.wlf
+*.vstf

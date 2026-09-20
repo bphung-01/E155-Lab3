@@ -1,2 +1,7 @@
-# Auto detect text files and perform LF normalization
+* text=auto
+*.sv text eol=lf
+*.svh text eol=lf
+*.pdc text eol=lf
+*.tcl text eol=lf
+*.qmd text eol=lf# Auto detect text files and perform LF normalization
 * text=auto
