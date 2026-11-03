@@ -1,0 +1,90 @@
+# E155 Lab 3
+# E155 FA23 revision v4 board with UPduino v3.1.
+# Pin numbers are FPGA package/signal numbers.
+
+# Reset: onboard SW0, active low.
+ldc_set_location -site {34} [get_ports {reset_n}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=UP} [get_ports {reset_n}]
+
+# Onboard SW1. Unused by the current continuous-scanning design.
+ldc_set_location -site {43} [get_ports {scan_enable}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=UP} [get_ports {scan_enable}]
+
+# Seven-segment outputs A through G.
+# Each output connects through 220 ohms to both digits' segment pins.
+ldc_set_location -site {13} [get_ports {seg_n[0]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {seg_n[0]}]
+
+ldc_set_location -site {18} [get_ports {seg_n[1]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {seg_n[1]}]
+
+ldc_set_location -site {2} [get_ports {seg_n[2]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {seg_n[2]}]
+
+ldc_set_location -site {47} [get_ports {seg_n[3]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {seg_n[3]}]
+
+ldc_set_location -site {48} [get_ports {seg_n[4]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {seg_n[4]}]
+
+ldc_set_location -site {9} [get_ports {seg_n[5]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {seg_n[5]}]
+
+ldc_set_location -site {4} [get_ports {seg_n[6]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {seg_n[6]}]
+
+# Digit controls: through 560 ohms to the PNP bases.
+# digit_n[0] = left digit; digit_n[1] = right digit.
+ldc_set_location -site {19} [get_ports {digit_n[0]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {digit_n[0]}]
+
+ldc_set_location -site {11} [get_ports {digit_n[1]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {digit_n[1]}]
+
+# Keypad rows: through 10k resistors to the NPN bases.
+# Top row: 1 2 3 A.
+ldc_set_location -site {10} [get_ports {row_drive[3]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {row_drive[3]}]
+
+# Second row: 4 5 6 B.
+ldc_set_location -site {3} [get_ports {row_drive[2]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {row_drive[2]}]
+
+# Third row: 7 8 9 C.
+ldc_set_location -site {6} [get_ports {row_drive[1]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {row_drive[1]}]
+
+# Bottom row: * 0 # D.
+ldc_set_location -site {21} [get_ports {row_drive[0]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {row_drive[0]}]
+
+# Keypad columns: each has an external 10k pull-up to 3.3 V.
+# Keypad pin 3: column 1.
+ldc_set_location -site {44} [get_ports {col_n[0]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {col_n[0]}]
+
+# Keypad pin 5: column 2.
+ldc_set_location -site {45} [get_ports {col_n[1]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {col_n[1]}]
+
+# Keypad pin 6: column 3.
+ldc_set_location -site {46} [get_ports {col_n[2]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {col_n[2]}]
+
+# Keypad pin 7: column 4.
+ldc_set_location -site {12} [get_ports {col_n[3]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {col_n[3]}]
+
+# Column indicator LEDs.
+ldc_set_location -site {42} [get_ports {led[0]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {led[0]}]
+
+ldc_set_location -site {38} [get_ports {led[1]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {led[1]}]
+
+ldc_set_location -site {28} [get_ports {led[2]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {led[2]}]
+
+# P36 requires the jumper to adapter PB3/D5, with SW7.8 OFF.
+ldc_set_location -site {36} [get_ports {led[3]}]
+ldc_set_port -iobuf {IO_TYPE=LVCMOS33 PULLMODE=NONE} [get_ports {led[3]}]
